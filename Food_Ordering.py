@@ -98,9 +98,10 @@ def menu():
         break
       else:
         print ("Invalid")
-        return
+        menu()
     except ValueError as e:
-          print(e)
+      print(e)
+      menu()
 
 def menu_b(username):
   print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
@@ -135,7 +136,8 @@ def menu_b(username):
         print ("Invalid")
         menu_b(username)
     except ValueError as e:
-          print(e)
+      print(e)
+      menu_b(username)
 
 
 def register():
@@ -156,9 +158,10 @@ def register():
           break
         else:
           print ("Invalid Input. Please try again.")
-          return
+          register()
       except ValueError as e:
         print(e)
+        register()
   else:
     password = input("Enter Password: ")
     password1 = input("Re-Enter Password: ")
@@ -181,12 +184,13 @@ def register():
             break
           else:
             print ("Invalid")
-            return
+            register()
         except ValueError as e:
           print(e)
+          register()
     else:
       print ("Invalid Input")
-      return
+      register()
 
 def customer_login():
   print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
@@ -200,7 +204,7 @@ def customer_login():
       user_menu(username)
     else:
       print("Wrong Credentials\n")
-      return
+      customer_login()
   else:
     choice = int(input(f"Username {username} does not exist. Enter [1] to return and [2] to Try Again: "))
     while True:  
@@ -213,11 +217,10 @@ def customer_login():
           break
         else: 
           print("Invalid Input. Please Try again.")
-          return
+          customer_login()
       except ValueError as e:
         print(e)
-
-
+        customer_login()
 
 def user_menu(username):
   print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
@@ -253,9 +256,10 @@ def user_menu(username):
         break
       else:
         print ("Invalid Input")
-        return
+        user_menu(username)
     except ValueError as e:
       print (e)
+      user_menu(username)
 
 def order_food(username):
   print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
@@ -314,7 +318,29 @@ def order_food(username):
                    quit()
                 else:                      
                   print("Invalid Input")
-                  return
+                  order_food(username)
+              except ValueError as e:
+                print(e)
+                order_food(username)
+          else: 
+            print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
+            print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
+            print ("________________________________________________________________________________________________________________________________")                
+            choice = int(input("Enter your choice: "))
+            while True:
+              try:
+                if choice == 1:
+                  user_menu(username)
+                  break
+                elif choice == 2:
+                  wallet(username)
+                  break
+                elif choice == 3:
+                   print("Thank you!")
+                   quit()
+                else:                      
+                  print("Invalid Input")
+                  order_food(username)
               except ValueError as e:
                 print(e)
                 order_food(username)
@@ -366,7 +392,29 @@ def order_food(username):
                    quit()
                 else:                      
                   print("Invalid Input")
-                  return
+                  order_food(username)
+              except ValueError as e:
+                print(e)
+                order_food(username)
+          else: 
+            print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
+            print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
+            print ("________________________________________________________________________________________________________________________________")                
+            choice = int(input("Enter your choice: "))
+            while True:
+              try:
+                if choice == 1:
+                  user_menu(username)
+                  break
+                elif choice == 2:
+                  wallet(username)
+                  break
+                elif choice == 3:
+                   print("Thank you!")
+                   quit()
+                else:                      
+                  print("Invalid Input")
+                  order_food(username)
               except ValueError as e:
                 print(e)
                 order_food(username)
@@ -418,7 +466,29 @@ def order_food(username):
                    quit()
                 else:                      
                   print("Invalid Input")
-                  return
+                  order_food(username)
+              except ValueError as e:
+                print(e)
+                order_food(username)
+          else: 
+            print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
+            print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
+            print ("________________________________________________________________________________________________________________________________")                
+            choice = int(input("Enter your choice: "))
+            while True:
+              try:
+                if choice == 1:
+                  user_menu(username)
+                  break
+                elif choice == 2:
+                  wallet(username)
+                  break
+                elif choice == 3:
+                   print("Thank you!")
+                   quit()
+                else:                      
+                  print("Invalid Input")
+                  order_food(username)
               except ValueError as e:
                 print(e)
                 order_food(username)
@@ -470,7 +540,29 @@ def order_food(username):
                    quit()
                 else:                      
                   print("Invalid Input")
-                  return
+                  order_food(username)
+              except ValueError as e:
+                print(e)
+                order_food(username)
+          else: 
+            print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
+            print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
+            print ("________________________________________________________________________________________________________________________________")                
+            choice = int(input("Enter your choice: "))
+            while True:
+              try:
+                if choice == 1:
+                  user_menu(username)
+                  break
+                elif choice == 2:
+                  wallet(username)
+                  break
+                elif choice == 3:
+                   print("Thank you!")
+                   quit()
+                else:                      
+                  print("Invalid Input")
+                  order_food(username)
               except ValueError as e:
                 print(e)
                 order_food(username)
@@ -522,7 +614,29 @@ def order_food(username):
                    quit()
                 else:                      
                   print("Invalid Input")
-                  return
+                  order_food(username)
+              except ValueError as e:
+                print(e)
+                order_food(username)
+          else: 
+            print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
+            print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
+            print ("________________________________________________________________________________________________________________________________")                
+            choice = int(input("Enter your choice: "))
+            while True:
+              try:
+                if choice == 1:
+                  user_menu(username)
+                  break
+                elif choice == 2:
+                  wallet(username)
+                  break
+                elif choice == 3:
+                   print("Thank you!")
+                   quit()
+                else:                      
+                  print("Invalid Input")
+                  order_food(username)
               except ValueError as e:
                 print(e)
                 order_food(username)
@@ -531,7 +645,7 @@ def order_food(username):
           break
         else:
           print("Invalid Input")
-          order_food
+          order_food(username)
       elif choice == 6:
         print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
         print ("\n---------------------------------------------------------- ADD-ONS ------------------------------------------------------------- ")
@@ -574,7 +688,29 @@ def order_food(username):
                    quit()
                 else:                      
                   print("Invalid Input")
-                  return
+                  order_food(username)
+              except ValueError as e:
+                print(e)
+                order_food(username)
+          else: 
+            print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
+            print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
+            print ("________________________________________________________________________________________________________________________________")                
+            choice = int(input("Enter your choice: "))
+            while True:
+              try:
+                if choice == 1:
+                  user_menu(username)
+                  break
+                elif choice == 2:
+                  wallet(username)
+                  break
+                elif choice == 3:
+                   print("Thank you!")
+                   quit()
+                else:                      
+                  print("Invalid Input")
+                  order_food(username)
               except ValueError as e:
                 print(e)
                 order_food(username)
@@ -583,13 +719,14 @@ def order_food(username):
           break
         else:
           print("Invalid Input")
-          order_food
+          order_food(username)
     except ValueError as e:
       print (e)
+      order_food(username)
 
 def wallet(username):
   print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n---------------------------------------------------------- ADD-ONS ------------------------------------------------------------- ")
+  print ("\n----------------------------------------------------------- WALLET ------------------------------------------------------------- ")
   print(f"\tUsername:  {username}")
   print(f"\tWallet:    P {user_acc[username]['balance']}")
   print(f"\tPoints:    {user_acc[username]['points']} points")
@@ -616,19 +753,22 @@ def wallet(username):
                   break
                 else:
                   print ("Invalid")
-                  return
+                  wallet(username)
               except ValueError as e:
                 print(e)
+                wallet(username)
           except ValueError as e:
             print(e)
+            wallet(username)
       elif choice == 3: 
         print("Thank you! ")
         quit()
       else:
         print("Invalid Input")
-        return
+        wallet(username)
     except ValueError as e:
       print(e)
+      wallet(username)
             
   
 def check_bag(username): #shows recent orders
@@ -638,6 +778,18 @@ def check_bag(username): #shows recent orders
     try:
       if username in user_bag:
         print (f"Your recent orders:\n{user_bag[username]}")
+        print ("________________________________________________________________________________________________________________________________")
+        choice = int(input("Enter 1 to return: "))
+        while True:
+          try:
+            if choice == 1: 
+              user_menu(username)
+            else:
+              print ("Invalid")
+              check_bag(username)
+          except ValueError as e:
+            print(e)
+            check_bag(username)
       else:
         print("You haven't ordered anything yet.")
         print ("________________________________________________________________________________________________________________________________")
@@ -677,7 +829,7 @@ def check_points(username):
         while True:
           try: 
             if choice == 1:
-              if {user_acc[username]['points']} >= 5:
+              if user_acc[username]['points'] >= 5:
                 points = int(input("Enter How many points you want to redeem: "))
                 redeem = points / 5
                 user_acc[username]['balance'] += redeem
