@@ -63,13 +63,17 @@ addons_lib = {
 
 user_acc = {}
 user_bag = {}
+a = "*" * 50 + " WELCOME TO AICKA'S ONLINE CAFE " + "*" * 50
+b = "_" * 133
+c = "-" * 60 + " RECEIPT " + "-" * 60
+d = " " * 50 + "-" * 20 
 
 admin_user = 'admin'
 admin_password = 'adminpass'
 
 def menu():
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n------------------------------------------------------------- MENU ----------------------------------------------------------------- ")
+  print (a)
+  print ("\n" + "-" * 62 + " MENU " + "-" * 62 )
   print ("\nDRINKS:")
   for drinks in drinks_lib:
     print(f"\t{drinks:50}Size: {drinks_lib[drinks]['size']} oz\t\t\tCost: P {drinks_lib[drinks]['cost']}.00")
@@ -89,7 +93,7 @@ def menu():
   for addons in addons_lib:
     print(f"\t{addons:50}Cost: P {addons_lib[addons]['cost']}.00")
 
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter 1 to return: "))
   while True:
     try:
@@ -104,8 +108,8 @@ def menu():
       menu()
 
 def menu_b(username):
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n------------------------------------------------------------- MENU ----------------------------------------------------------------- ")
+  print (a)
+  print ("\n" + "-" * 62 + " MENU " + "-" * 62 )
   print ("\nDRINKS:")
   for drinks in drinks_lib:
     print(f"\t{drinks:50}Size: {drinks_lib[drinks]['size']} oz\t\t\tCost: P {drinks_lib[drinks]['cost']}.00")
@@ -125,7 +129,7 @@ def menu_b(username):
   for addons in addons_lib:
     print(f"\t{addons:50}Cost: P {addons_lib[addons]['cost']}.00")
 
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter 1 to return: "))
   while True:
     try:
@@ -141,8 +145,8 @@ def menu_b(username):
 
 
 def register():
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n---------------------------------------------------------- REGISTER ------------------------------------------------------------ ")
+  print (a)
+  print ("\n" + "-" * 64 + " REGISTER " + "-" * 60 )
   username = input("Enter Username: ")
 
   if username in user_acc:
@@ -165,7 +169,7 @@ def register():
   else:
     password = input("Enter Password: ")
     password1 = input("Re-Enter Password: ")
-    balance = 0
+    balance = 0.00
     points = 0
 
     if password == password1:
@@ -175,7 +179,7 @@ def register():
       'points' : points
     }
       print("\nRegister Complete! Return to Main Menu and chooce [3] to Log-in.")
-      print ("________________________________________________________________________________________________________________________________")
+      print (b)
       choice = int(input("Enter 1 to return: "))
       while True:
         try:
@@ -193,8 +197,8 @@ def register():
       register()
 
 def customer_login():
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n-------------------------------------------------------- CUSTOMER LOG-IN ------------------------------------------------------- ")
+  print (a)
+  print ("\n" + "-" * 58 + " CUSTOMER LOG_IN " + "-" * 58 )
   username = input("Username: ")
   password = input("Password: ")
 
@@ -223,15 +227,15 @@ def customer_login():
         customer_login()
 
 def user_menu(username):
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n------------------------------------------------------- CUSTOMER MAIN MENU ----------------------------------------------------- ")
+  print(a)
+  print ("\n" + "-" * 60 + " MAIN MENU " + "-" * 62 )
   print ("\t [1] Menu")
   print ("\t [2] Order Food")
   print ("\t [3] Wallet")
   print ("\t [4] Check Bag")
   print ("\t [5] Check Points")
   print ("\t [6] Exit")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your Choice: "))
   while True:
     try: 
@@ -262,8 +266,8 @@ def user_menu(username):
       user_menu(username)
 
 def order_food(username):
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n----------------------------------------------------------- ORDER FOOD --------------------------------------------------------- ")
+  print(a)
+  print ("\n" + "-" * 58 + " ORDER DASHBOARD " + "-" * 58 )
   print ("\t [1] Drinks")
   print ("\t [2] Rice Bowl")
   print ("\t [3] Pasta")
@@ -271,17 +275,18 @@ def order_food(username):
   print ("\t [5] Pastries")
   print ("\t [6] Add-ons")
   print ("\t [7] Return")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your Choice: "))
 
   while True:
     try:
       if choice == 1:
-        print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-        print ("\n----------------------------------------------------------- DRINKS ------------------------------------------------------------- ")
+        print(a)
+        print ("\n" + "-" * 62 + " DRINKS " + "-" * 62 )
+        
         for drinks in drinks_lib:
           print(f"\n\t{drinks:50}Size: {drinks_lib[drinks]['size']} oz\t\t\tCost: P {drinks_lib[drinks]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         order = input("Enter your Choice of order (Enter 1 to return): ")
         if order in drinks_lib:
           quantity = int(input("How many do you want to order?: "))
@@ -292,9 +297,9 @@ def order_food(username):
             else:
               user_bag[username].append(order)
             print (f"\nSuccessfully ordered {order}. ")
-            print ("\n----------------------------------------------------------- RECEIPT ------------------------------------------------------------- ")
+            print (c)
             print (f"\n\t\t\t\t{order:20}\t\t\t(P{drinks_lib[order]['cost']}\tx\t{quantity})")
-            print ("\n                                  -------------------------------------------------------\n")
+            print (d)
             print (f"\t\t\t\t\tTotal: \t\t\t\t\t{total}")
             print (f"\t\t\t\t\tBalance:\t\t\t\t{user_acc[username]['balance']}")
             user_acc[username]['balance'] -= total
@@ -303,7 +308,7 @@ def order_food(username):
             user_acc[username]['points'] += quantity
             print (f"\t\t\t\t\tTotal Points: \t\t\t\t{user_acc[username]['points']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Order Again\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)              
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -325,7 +330,7 @@ def order_food(username):
           else: 
             print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)             
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -351,11 +356,11 @@ def order_food(username):
           print("Invalid Input")
           order_food(username)
       elif choice == 2:
-        print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-        print ("\n--------------------------------------------------------- RICE BOWLS ----------------------------------------------------------- ")
+        print (a)
+        print ("\n" + "-" * 62 + " RiCE BOWL " + "-" * 62 )
         for ricebowl in ricebowl_lib:
           print(f"\n\t{ricebowl:50}Cost: P {ricebowl_lib[ricebowl]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         order = input("Enter your Choice of order (Enter 1 to return): ")
         if order in ricebowl_lib:
           quantity = int(input("How many do you want to order?: "))
@@ -366,9 +371,9 @@ def order_food(username):
             else:
               user_bag[username].append(order)
             print (f"\nSuccessfully ordered {order}. ")
-            print ("\n----------------------------------------------------------- RECEIPT ------------------------------------------------------------- ")
+            print (c)
             print (f"\n\t\t\t\t{order:20}\t\t\t(P{ricebowl_lib[order]['cost']}\tx\t{quantity})")
-            print ("\n                                  -------------------------------------------------------\n")
+            print (d)
             print (f"\t\t\t\t\tTotal: \t\t\t\t\t{total}")
             print (f"\t\t\t\t\tBalance:\t\t\t\t{user_acc[username]['balance']}")
             user_acc[username]['balance'] -= total
@@ -377,7 +382,7 @@ def order_food(username):
             user_acc[username]['points'] += quantity
             print (f"\t\t\t\t\tTotal Points: \t\t\t\t{user_acc[username]['points']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Order Again\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)            
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -399,7 +404,7 @@ def order_food(username):
           else: 
             print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)             
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -425,11 +430,11 @@ def order_food(username):
           print("Invalid Input")
           order_food(username)
       elif choice == 3:
-        print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-        print ("\n------------------------------------------------------------ PASTA ------------------------------------------------------------- ")
+        print (a)
+        print ("\n" + "-" * 62 + " PASTA" + "-" * 62 )
         for pasta in pasta_lib:
           print(f"\n\t{pasta:50}Cost: P {pasta_lib[pasta]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         order = input("Enter your Choice of order (Enter 1 to return): ")
         if order in pasta_lib:
           quantity = int(input("How many do you want to order?: "))
@@ -440,9 +445,9 @@ def order_food(username):
             else:
               user_bag[username].append(order)
             print (f"\nSuccessfully ordered {order}. ")
-            print ("\n----------------------------------------------------------- RECEIPT ------------------------------------------------------------- ")
+            print (c)
             print (f"\n\t\t\t\t{order:20}\t\t\t(P{pasta_lib[order]['cost']}\tx\t{quantity})")
-            print ("\n                                  -------------------------------------------------------\n")
+            print (d)
             print (f"\t\t\t\t\tTotal: \t\t\t\t\t{total}")
             print (f"\t\t\t\t\tBalance:\t\t\t\t{user_acc[username]['balance']}")
             user_acc[username]['balance'] -= total
@@ -451,7 +456,7 @@ def order_food(username):
             user_acc[username]['points'] += quantity
             print (f"\t\t\t\t\tTotal Points: \t\t\t\t{user_acc[username]['points']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Order Again\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)               
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -473,7 +478,7 @@ def order_food(username):
           else: 
             print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)            
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -499,11 +504,11 @@ def order_food(username):
           print("Invalid Input")
           order_food(username)
       elif choice == 4:
-        print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-        print ("\n------------------------------------------------------------ PIZZA ------------------------------------------------------------- ")
+        print (a)
+        print ("\n" + "-" * 62 + " PIZZA " + "-" * 62 )
         for pizza in pizza_lib:
           print(f"\n\t{pizza:50}Cost: P {pizza_lib[pizza]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         order = input("Enter your Choice of order (Enter 1 to return): ")
         if order in pizza_lib:
           quantity = int(input("How many do you want to order?: "))
@@ -514,9 +519,9 @@ def order_food(username):
             else:
               user_bag[username].append(order)
             print (f"\nSuccessfully ordered {order}. ")
-            print ("\n----------------------------------------------------------- RECEIPT ------------------------------------------------------------- ")
+            print (c)
             print (f"\n\t\t\t\t{order:20}\t\t\t(P{pizza_lib[order]['cost']}\tx\t{quantity})")
-            print ("\n                                  -------------------------------------------------------\n")
+            print (d)
             print (f"\t\t\t\t\tTotal: \t\t\t\t\t{total}")
             print (f"\t\t\t\t\tBalance:\t\t\t\t{user_acc[username]['balance']}")
             user_acc[username]['balance'] -= total
@@ -525,7 +530,7 @@ def order_food(username):
             user_acc[username]['points'] += quantity
             print (f"\t\t\t\t\tTotal Points: \t\t\t\t{user_acc[username]['points']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Order Again\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)                
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -547,7 +552,7 @@ def order_food(username):
           else: 
             print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)                
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -573,11 +578,11 @@ def order_food(username):
           print("Invalid Input")
           order_food(username)
       elif choice == 5:
-        print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-        print ("\n------------------------------------------------------------ PASTRIES ------------------------------------------------------------- ")
+        print (a)
+        print ("\n" + "-" * 62 + " PASTRY " + "-" * 62 )
         for pastries in pastries_lib:
           print(f"\n\t{pastries:50}Cost: P {pastries_lib[pastries]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         order = input("Enter your Choice of order (Enter 1 to return): ")
         if order in pastries_lib:
           quantity = int(input("How many do you want to order?: "))
@@ -588,9 +593,9 @@ def order_food(username):
             else:
               user_bag[username].append(order)
             print (f"\nSuccessfully ordered {order}. ")
-            print ("\n----------------------------------------------------------- RECEIPT ------------------------------------------------------------- ")
+            print (c)
             print (f"\n\t\t\t\t{order:20}\t\t\t(P{pastries_lib[order]['cost']}\tx\t{quantity})")
-            print ("\n                                  -------------------------------------------------------\n")
+            print (d)
             print (f"\t\t\t\t\tTotal: \t\t\t\t\t{total}")
             print (f"\t\t\t\t\tBalance:\t\t\t\t{user_acc[username]['balance']}")
             user_acc[username]['balance'] -= total
@@ -599,7 +604,7 @@ def order_food(username):
             user_acc[username]['points'] += quantity
             print (f"\t\t\t\t\tTotal Points: \t\t\t\t{user_acc[username]['points']}")
             print ("\n\t\t\t[1] Return\t\t\t[2] Order Again\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)                
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -621,7 +626,7 @@ def order_food(username):
           else: 
             print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)                
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -647,11 +652,11 @@ def order_food(username):
           print("Invalid Input")
           order_food(username)
       elif choice == 6:
-        print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-        print ("\n---------------------------------------------------------- ADD-ONS ------------------------------------------------------------- ")
+        print (a)
+        print ("\n" + "-" * 62 + " ADD_ONS " + "-" * 62 )
         for addons in addons_lib:
           print(f"\n\t{addons:50}Cost: P {addons_lib[addons]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         order = input("Enter your Choice of order (Enter 1 to return): ")
         if order in addons_lib:
           quantity = int(input("How many do you want to order?: "))
@@ -662,9 +667,9 @@ def order_food(username):
             else:
               user_bag[username].append(order)
             print (f"\nSuccessfully ordered {order}. ")
-            print ("\n----------------------------------------------------------- RECEIPT ------------------------------------------------------------- ")
+            print (c)
             print (f"\n\t\t\t\t{order:20}\t\t\t(P{addons_lib[order]['cost']}\tx\t{quantity})")
-            print ("\n                                  -------------------------------------------------------\n")
+            print (d)
             print (f"\t\t\t\t\tTotal: \t\t\t\t\t{total}")
             print (f"\t\t\t\t\tBalance:\t\t\t\t{user_acc[username]['balance']}")
             user_acc[username]['balance'] -= total
@@ -673,7 +678,7 @@ def order_food(username):
             user_acc[username]['points'] += quantity
             print (f"\t\t\t\t\tTotal Points: \t\t\t\t{user_acc[username]['points']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Order Again\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)                
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -695,7 +700,7 @@ def order_food(username):
           else: 
             print(f"Insufficient Balance. Your current balance is {user_acc[username]['balance']}")
             print("\n\t\t\t[1] Return\t\t\t[2] Wallet\t\t\t[3] Exit")
-            print ("________________________________________________________________________________________________________________________________")                
+            print (b)               
             choice = int(input("Enter your choice: "))
             while True:
               try:
@@ -725,13 +730,13 @@ def order_food(username):
       order_food(username)
 
 def wallet(username):
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n----------------------------------------------------------- WALLET ------------------------------------------------------------- ")
+  print (a)
+  print ("\n" + "-" * 62 + " WALLET " + "-" * 62 )
   print(f"\tUsername:  {username}")
   print(f"\tWallet:    P {user_acc[username]['balance']}")
   print(f"\tPoints:    {user_acc[username]['points']} points")
   print("\n\t\t\t[1] Return\t\t\t[2] Deposit\t\t\t[3] Exit")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your choice: "))
   while True:
     try:
@@ -744,7 +749,7 @@ def wallet(username):
             amount = int(input('\nEnter Amount to deposit: '))
             user_acc[username]['balance'] += amount
             print(f"You have deposited {amount}, your new balance is {user_acc[username]['balance']}.")
-            print ("________________________________________________________________________________________________________________________________")
+            print (b)
             choice = int(input("Enter 1 to return: "))
             while True:
               try:
@@ -772,13 +777,13 @@ def wallet(username):
             
   
 def check_bag(username): #shows recent orders
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n------------------------------------------------------------- BAG -------------------------------------------------------------- ")
+  print (a)
+  print ("\n" + "-" * 62 + " BAG " + "-" * 62 )
   while True:
     try:
       if username in user_bag:
         print (f"Your recent orders:\n{user_bag[username]}")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         choice = int(input("Enter 1 to return: "))
         while True:
           try:
@@ -792,7 +797,7 @@ def check_bag(username): #shows recent orders
             check_bag(username)
       else:
         print("You haven't ordered anything yet.")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         choice = int(input("Enter 1 to return: "))
         while True:
           try:
@@ -809,13 +814,13 @@ def check_bag(username): #shows recent orders
       check_bag(username)
       
 def check_points(username):
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n----------------------------------------------------------- POINTS ------------------------------------------------------------- ")
+  print (a)
+  print ("\n" + "-" * 62 + " POINTS " + "-" * 62 )
   print(f"\tUsername:  {username}")
   print(f"\tWallet:    P {user_acc[username]['balance']}")
   print(f"\tPoints:    {user_acc[username]['points']} points")
   print("\n\t\t\t[1] Return\t\t\t[2] Redeem\t\t\t[3] Exit")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your choice: "))
   while True:
     try:
@@ -831,10 +836,11 @@ def check_points(username):
             if choice == 1:
               if user_acc[username]['points'] >= 5:
                 points = int(input("Enter How many points you want to redeem: "))
+                user_acc[username]['points'] -= points
                 redeem = points / 5
                 user_acc[username]['balance'] += redeem
-                print (f"Congratulations! You redeemed P{redeem}.00. Your new balance is P{user_acc[username]['balance']}.00")
-                print ("________________________________________________________________________________________________________________________________")
+                print (f"Congratulations! You redeemed P{redeem}. Your new balance is P{user_acc[username]['balance']}")
+                print (b)
                 choice = int(input("Enter 1 to return: "))
                 while True:
                   try:
@@ -882,11 +888,11 @@ def admin_login():
       admin_login()
 
 def admin_menu():
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n---------------------------------------------------------- ADMIN MENU ---------------------------------------------------------- ")
+  print (a)
+  print ("\n" + "-" * 62 + " MAIN MENU " + "-" * 62 )
   print("\n[1] Update Menu")
   print("[2] Exit")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your Choice: "))
   while True:
     try:
@@ -904,12 +910,12 @@ def admin_menu():
 
 
 def admin_edit():
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
-  print ("\n--------------------------------------------------------- UPDATE MENU ---------------------------------------------------------- ")
+  print (a)
+  print ("\n" + "-" * 62 + " UPDATE MENU " + "-" * 62 )
   print("\n [1] Edit Price")
   print("\n [2] Add New Product")
   print("\n [3] Log Out")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your Choice: "))
   while True:
     try:
@@ -929,7 +935,8 @@ def admin_edit():
       print(e)
   
 def update_price():
-  print ("\n--------------------------------------------------------- UPDATE PRICE -------------------------------------------------------- ")
+  print(a)
+  print ("\n" + "-" * 62 + " UPDATE PRICE " + "-" * 62 )
   print ("\t [1] Drinks")
   print ("\t [2] Rice Bowl")
   print ("\t [3] Pasta")
@@ -937,7 +944,7 @@ def update_price():
   print ("\t [5] Pastries")
   print ("\t [6] Add-ons")
   print ("\t [7] Return")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your Choice: "))
 
   while True: 
@@ -945,7 +952,7 @@ def update_price():
       if choice == 1: 
         for drinks in drinks_lib:
           print(f"\t{drinks:50}Size: {drinks_lib[drinks]['size']} oz\t\t\tCost: P {drinks_lib[drinks]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         drink_name = input("Enter Drink name: ")
         if drink_name in drinks_lib:
           new_price = int(input("Enter new price: "))
@@ -958,7 +965,7 @@ def update_price():
       elif choice == 2:
         for ricebowl in ricebowl_lib:
           print(f"\t{ricebowl:50}Cost: P {ricebowl_lib[ricebowl]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         ricebowl_name = input("Enter Rice Bowl name: ")
         if ricebowl_name in ricebowl_lib:
           new_price = int(input("Enter new price: "))
@@ -971,7 +978,7 @@ def update_price():
       elif choice == 3:
         for pasta in pasta_lib:
           print(f"\t{pasta:50}Cost: P {pasta_lib[pasta]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         pasta_name = input("Enter Pasta name: ")
         if pasta_name in pasta_lib:
           new_price = int(input("Enter new price: "))
@@ -984,7 +991,7 @@ def update_price():
       elif choice == 4:
         for pasta in pasta_lib:
           print(f"\t{pasta:50}Cost: P {pasta_lib[pasta]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         pizza_name = input("Enter Pizza name: ")
         if pizza_name in pizza_lib:
           new_price = int(input("Enter new price: "))
@@ -997,7 +1004,7 @@ def update_price():
       elif choice == 5:
         for pastries in pastries_lib:
           print(f"\t{pastries:50}Cost: P {pastries_lib[pastries]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         pastry_name = input("Enter Pastry name: ")
         if pastry_name in pastries_lib:
           new_price = int(input("Enter new price: "))
@@ -1010,7 +1017,7 @@ def update_price():
       elif choice == 6:
         for addons in addons_lib:
           print(f"\t{addons:50}Cost: P {addons_lib[addons]['cost']}.00")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         addon_name = input("Enter Add-on: ")
         if addon_name in addons_lib:
           new_price = int(input("Enter new price: "))
@@ -1030,7 +1037,7 @@ def update_price():
       update_price()
 
 def add_new():
-  print ("\n--------------------------------------------------------- UPDATE MENU -------------------------------------------------------- ")
+  print ("\n" + "-" * 62 + " UPDATE MENU " + "-" * 62 )
   print ("\t [1] Drinks")
   print ("\t [2] Rice Bowl")
   print ("\t [3] Pasta")
@@ -1038,7 +1045,7 @@ def add_new():
   print ("\t [5] Pastries")
   print ("\t [6] Add-ons")
   print ("\t [7] Return")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your Choice: "))
   while True:
     try:
@@ -1048,7 +1055,7 @@ def add_new():
         cost = int(input("Enter price: "))
         drinks_lib[new_product] = {'size' : size, 'cost' : cost}
         print(f"Successfully added {new_product} to drinks menu. ")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         choice1 = int(input("Enter 1 to return: "))
         while True:
           try:
@@ -1065,7 +1072,7 @@ def add_new():
         cost = int(input("Enter price: "))
         ricebowl_lib[new_product] = {'cost' : cost}
         print(f"Successfully added {new_product} to ricebowl menu. ")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         choice1 = int(input("Enter 1 to return: "))
         while True:
           try:
@@ -1082,7 +1089,7 @@ def add_new():
         cost = int(input("Enter price: "))
         pasta_lib[new_product] = {'cost' : cost}
         print(f"Successfully added {new_product} to pasta menu. ")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         choice1 = int(input("Enter 1 to return: "))
         while True:
           try:
@@ -1099,7 +1106,7 @@ def add_new():
         cost = int(input("Enter price: "))
         pizza_lib[new_product] = {'cost' : cost}
         print(f"Successfully added {new_product} to pizza menu. ")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         choice1 = int(input("Enter 1 to return: "))
         while True:
           try:
@@ -1116,7 +1123,7 @@ def add_new():
         cost = int(input("Enter price: "))
         pastries_lib[new_product] = {'cost' : cost}
         print(f"Successfully added {new_product} to pastry menu. ")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         choice1 = int(input("Enter 1 to return: "))
         while True:
           try:
@@ -1133,7 +1140,7 @@ def add_new():
         cost = int(input("Enter price: "))
         addons_lib[new_product] = {'cost' : cost}
         print(f"Successfully added {new_product} to add-on menu. ")
-        print ("________________________________________________________________________________________________________________________________")
+        print (b)
         choice1 = int(input("Enter 1 to return: "))
         while True:
           try:
@@ -1155,15 +1162,14 @@ def add_new():
       add_new()
 
 
-
 def main_menu():
-  print ("\n***************************************************** WELCOME TO AICKA'S CAFE ************************************************** ")
+  print(a)
   print ("\t[1] Menu")
   print ("\t[2] Register")
   print ("\t[3] Customer Log-in")
   print ("\t[4] Admin Log-in")
   print ("\t[5] Exit")
-  print ("________________________________________________________________________________________________________________________________")
+  print (b)
   choice = int(input("Enter your Choice: "))
   
   while True:
